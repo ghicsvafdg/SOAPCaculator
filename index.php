@@ -11,18 +11,24 @@
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
+    <div class="wrapper" style="min-height: 100vh;  position: relative;top: 0; height: 100vh; background-color: #ccffcc;">
+    <div class="container">
+    <div class="pt-5">
+    <div class="card">
+    <div class="card-body">
         <h2 class="text-center">Simple SOAP Caculator</h2>
         <br>
         <div class="content">
             <!-- the interface -->
+            <div class="pl-5">
             <form action="index.php" method="post">
-                <table class="table-bordered table-hover">
-                    <tr>
+                <table class="table-bordered table-hover" style="color:green;">
+                    <tr > 
                         <td>
                             <label>Enter first number: </label>
                         </td>
                         <td>
-                            <input type="text" name="x" pattern="^\d+(\.\d{1,15})?$" required>
+                        <span ><input type="text" name="x" pattern="^\d+(\.\d{1,15})?$" required></span>
                         </td>
                     </tr>
                     <tr>
@@ -38,19 +44,20 @@
                             <label>Choose caculation method: </label>
                         </td>
                         <td>
-                            <input type="radio" name="z" value="1" checked="checked"> summation
-                            <input type="radio" name="z" value="2"> subtraction
-                            <input type="radio" name="z" value="3"> multiplication
-                            <input type="radio" name="z" value="4"> division
+                           <span style="border: 1px solid #99cc66;"> <input type="radio" name="z" value="1" checked="checked"> summation</span>
+                           <span style="border: 1px solid #99cc66;">  <input type="radio" name="z" value="2"> subtraction</span>
+                           <span style="border: 1px solid #99cc66;">  <input type="radio" name="z" value="3"> multiplication</span>
+                           <span style="border: 1px solid #99cc66;">  <input type="radio" name="z" value="4"> division</span>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <button type="submit" class="btn btn-primary">Caculate</button>
+                        <button type="submit" class="btn btn-success">Caculate</button>
                         </td>   
                     </tr>
                 </table>
             </form>
+            </div>
             <br>
             <!-- get data to caculate -->
             <?php
@@ -66,7 +73,7 @@
                                     'y' => $y,
                                     'z' => $z);
                     //Create object that referer a web services
-                    $client = new soapclient('http://localhost/WebServiceSOAP/caculator-with-soap/server.php');
+                    $client = new soapclient('http://localhost/SOAPCaculator/server.php');
                     //Call a function at server and send parameters too
                     $result = $client->call('caculate',$param);
                     //Process result
@@ -105,6 +112,12 @@
                     }
                 }
             ?>
+            </div>
+           
+        </div>
+        </div>
+        </div>
+        </div>
         </div>
     </body>
 </html>
